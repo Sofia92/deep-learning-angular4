@@ -23,7 +23,9 @@ export class HeroesListsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.heroes = this._heroService.fetchHeroes()
+    this._heroService.fetchHeroes().subscribe((heroes: Hero[]) => {
+      this.heroes = heroes;
+    })
   }
 
   routerToHeroDetail(hero: Hero) {

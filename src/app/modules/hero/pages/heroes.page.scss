@@ -5,4 +5,13 @@
  */
 :host {
   display: block;
+  span {
+    border: 1px solid #eee;
+    padding: 5px 10px;
+    border-radius: 4px;
+    &.active {
+      color: #fff;
+      background: #CFD8DC;
+    }
+  }
 }

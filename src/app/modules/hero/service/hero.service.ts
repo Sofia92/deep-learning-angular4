@@ -5,18 +5,24 @@
  * Description:
  */
 import {Injectable} from '@angular/core';
-import * as MockData from './../mocks/mock-heroes';
+import {Observable} from 'rxjs/Observable';
+import {HttpClient} from '@angular/common/http';
 import {Hero} from '../models/hero';
+import 'rxjs/add/observable/of';
+import {environment} from './../../../../environments/environment';
 
+const host = environment.host;
 @Injectable()
 export class HeroService {
-  fetchHeroes(): Hero[] {
-    const heroes = MockData.HEROES;
-    return heroes.map(hero => Hero.createByJSON(hero));
+  constructor(private http: HttpClient) {
   }
 
-  getHeroById(heroId: number) {
-    const heroes = MockData.HEROES;
-    return heroes.find(hero => hero.id === heroId);
+  fetchHeroes(): Observable<Hero[]> {
+    return this.http.get(`${host}/heroes`)
+      .map((heroes: any[]) => heroes.map(hero => Hero.createByJSON(hero)));
+  }
+
+  getHeroById(heroId: number): Observable<Hero> {
+    return this.http.get(`${host}/heroes/${heroId}`).map(hero => hero);
   }
 }
