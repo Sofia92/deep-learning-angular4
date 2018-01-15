@@ -39,6 +39,7 @@ export class HeroDetailComponent implements OnInit {
 
   changeName(name: string) {
     this.hero.name = name;
+    this._heroService.updateHero(this.hero).subscribe(hero => this.hero = hero)
   }
 
   cancel() {

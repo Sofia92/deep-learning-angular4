@@ -23,6 +23,18 @@ export class HeroService {
   }
 
   getHeroById(heroId: number): Observable<Hero> {
-    return this.http.get(`${host}/heroes/${heroId}`).map(hero => hero);
+    return this.http.get(`${host}/heroes/${heroId}`);
+  }
+
+  createHero(heroName: string): Observable<Hero> {
+    return this.http.post(`${host}/heroes`, {name: heroName});
+  }
+
+  updateHero(hero: Hero): Observable<Hero> {
+    return this.http.patch(`${host}/heroes/${hero.id}`, {name: hero.name});
+  }
+
+  removeHero(hero: Hero) {
+    return this.http.delete(`${host}/heroes/${hero.id}`);
   }
 }

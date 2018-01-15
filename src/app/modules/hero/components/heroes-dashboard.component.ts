@@ -17,6 +17,8 @@ import {Router} from "@angular/router";
 
 export class HeroesDashboardComponent implements OnInit {
   topHeroes: Hero[];
+  heroName: string;
+  ableCreateHero: boolean;
 
   ngOnInit() {
     this._heroService.fetchHeroes().subscribe((heroes: Hero[]) => {
@@ -25,10 +27,31 @@ export class HeroesDashboardComponent implements OnInit {
   }
 
   constructor(private _heroService: HeroService, private router: Router) {
-
+    this.ableCreateHero = false;
   }
 
   routerToHeroDetail(hero: Hero) {
     this.router.navigate([`/heroes/${hero.id}`]);
+  }
+
+  removeHero(hero: Hero) {
+    this._heroService.removeHero(hero).switchMap(() => {
+      return this._heroService.fetchHeroes();
+    }).subscribe((heroes: Hero[]) => {
+      this.topHeroes = heroes.slice(0, 5);
+    })
+  }
+
+  showCreateHero() {
+    this.ableCreateHero = true;
+  }
+
+  createHero(name) {
+    this.ableCreateHero = false;
+    this._heroService.createHero(name).switchMap(() => {
+      return this._heroService.fetchHeroes();
+    }).subscribe((heroes: Hero[]) => {
+      this.topHeroes = heroes.slice(0, 5);
+    })
   }
 }

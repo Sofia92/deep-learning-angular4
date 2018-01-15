@@ -1,5 +1,10 @@
 <div class="container">
   <ul class="list-unstyled">
-    <li *ngFor="let hero of topHeroes" (click)="routerToHeroDetail(hero)">{{hero.name}}</li>
+    <li *ngFor="let hero of topHeroes" style="position:relative;"
+        (click)="routerToHeroDetail(hero)">{{hero.name}}
+      <span class="fa fa-minus" (click)="removeHero(hero); $event.stopPropagation()">remove</span>
+    </li>
+    <li (click)="showCreateHero()">新建英雄</li>
+    <li *ngIf="ableCreateHero"><input type="text" [(ngModel)]="heroName" (keyup.enter)="createHero(heroName)"></li>
   </ul>
 </div>
