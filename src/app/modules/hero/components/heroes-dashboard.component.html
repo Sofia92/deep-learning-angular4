@@ -5,6 +5,6 @@
       <span class="fa fa-minus" (click)="removeHero(hero); $event.stopPropagation()">remove</span>
     </li>
     <li (click)="showCreateHero()">新建英雄</li>
-    <li *ngIf="ableCreateHero"><input type="text" [(ngModel)]="heroName" (keyup.enter)="createHero(heroName)"></li>
+    <li *ngIf="ableCreateHero"><input type="text" id="superHero" value="{{heroName}}" [(ngModel)]="heroName" (keyup.enter)="createHero(heroName)"></li>
   </ul>
 </div>

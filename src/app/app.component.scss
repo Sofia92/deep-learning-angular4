@@ -1,3 +1,13 @@
 :host {
   display: block;
+  nav {
+    li {
+      display: inline-block;
+      padding: 5px 10px;
+      border-bottom: 2px solid #ffffff;
+      &.active {
+        border-bottom: 2px solid #dddddd;
+      }
+    }
+  }
 }

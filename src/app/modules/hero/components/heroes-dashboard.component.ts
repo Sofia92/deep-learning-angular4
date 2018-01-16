@@ -23,7 +23,8 @@ export class HeroesDashboardComponent implements OnInit {
   ngOnInit() {
     this._heroService.fetchHeroes().subscribe((heroes: Hero[]) => {
       this.topHeroes = heroes.slice(0, 5);
-    })
+    });
+    this.heroName = 'super hero';
   }
 
   constructor(private _heroService: HeroService, private router: Router) {

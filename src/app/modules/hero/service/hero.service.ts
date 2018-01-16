@@ -31,7 +31,7 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<Hero> {
-    return this.http.patch(`${host}/heroes/${hero.id}`, {name: hero.name});
+    return this.http.put(`${host}/heroes/${hero.id}`, {name: hero.name});
   }
 
   removeHero(hero: Hero) {
