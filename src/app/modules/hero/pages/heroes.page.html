@@ -1,5 +1,9 @@
 <h3>Tour of Heroes</h3>
-<span class="plain-link" routerLink="/heroes/dashboard" [routerLinkActive]="['active']">Dashboard</span>
-<span class="plain-link" routerLink="/heroes/lists" [routerLinkActive]="['active']">Heroes</span>
+<nav>
+  <span class="plain-link" routerLink="/heroes/dashboard" [routerLinkActive]="['active']">Dashboard</span>
+  <span class="plain-link" routerLink="/heroes/lists" [routerLinkActive]="['active']">Heroes</span>
+</nav>
 
-<router-outlet></router-outlet>
+<div class="app-detail">
+  <router-outlet></router-outlet>
+</div>

@@ -21,6 +21,7 @@ import 'rxjs/add/operator/switchMap';
 export class HeroDetailComponent implements OnInit {
   selectedHero: Hero;
   hero: Hero;
+  currentHeroClass = {};
 
   ngOnInit() {
     this.activatedRoute.params
@@ -31,22 +32,33 @@ export class HeroDetailComponent implements OnInit {
       }).subscribe((hero: Hero) => {
       this.selectedHero = hero;
       this.hero = hero;
+      this.hero.infoType = '1';
     });
   }
 
   constructor(private activatedRoute: ActivatedRoute, private _heroService: HeroService) {
+
   }
 
-  changeName(name: string) {
-    this.hero.name = name;
-    this._heroService.updateHero(this.hero).subscribe(hero => this.hero = hero)
+  saveHero() {
+    this._heroService.updateHero(this.hero).switchMap(() => {
+      return this._heroService.getHeroById(+this.hero.id);
+    }).subscribe((hero: Hero) => {
+      this.selectedHero = hero;
+      this.hero = hero;
+    })
   }
 
-  cancel() {
-    this.hero = this.selectedHero;
+
+  changeInfo() {
+    this.currentHeroClass = {
+      'initial': false,
+      'modified': true
+    }
   }
 
   back() {
     window.history.back()
   }
+
 }

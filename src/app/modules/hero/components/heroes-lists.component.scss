@@ -3,9 +3,12 @@
  * Date: 2018/1/11
  * Description:
  */
+@import "hero-theme";
+
 :host {
   display: block;
   .container {
+    @extend %margin-container;
     ul {
       li {
         width: 300px;

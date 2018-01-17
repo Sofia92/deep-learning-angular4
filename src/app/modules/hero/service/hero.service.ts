@@ -31,7 +31,12 @@ export class HeroService {
   }
 
   updateHero(hero: Hero): Observable<Hero> {
-    return this.http.put(`${host}/heroes/${hero.id}`, {name: hero.name});
+    const params = {
+      name: hero.name,
+      phone: hero.phone,
+      hobby: hero.hobby
+    };
+    return this.http.put(`${host}/heroes/${hero.id}`, params);
   }
 
   removeHero(hero: Hero) {

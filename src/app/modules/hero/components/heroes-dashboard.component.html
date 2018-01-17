@@ -1,10 +1,14 @@
 <div class="container">
+  <div class="append-hero-area">
+    <ng-container *ngIf="ableCreateHero">
+      <input type="text" value="{{heroName}}" [(ngModel)]="heroName" (keyup.enter)="createHero(heroName)">
+    </ng-container>
+    <button (click)="showCreateHero()">新建英雄</button>
+  </div>
   <ul class="list-unstyled">
     <li *ngFor="let hero of topHeroes" style="position:relative;"
         (click)="routerToHeroDetail(hero)">{{hero.name}}
       <span class="fa fa-minus" (click)="removeHero(hero); $event.stopPropagation()">remove</span>
     </li>
-    <li (click)="showCreateHero()">新建英雄</li>
-    <li *ngIf="ableCreateHero"><input type="text" id="superHero" value="{{heroName}}" [(ngModel)]="heroName" (keyup.enter)="createHero(heroName)"></li>
   </ul>
 </div>

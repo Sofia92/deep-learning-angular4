@@ -8,20 +8,35 @@
 interface IHeroInterface {
   id?: string | number;
   name?: string;
+  age?: number;
+  phone?: string;
+  address?: string;
+  hobby?: string;
+  infoType?: string;
 }
 
 export class Hero implements IHeroInterface {
   id: string | number;
   name: string;
+  age: number;
+  phone: string;
+  address: string;
+  hobby: string;
+  infoType: string;
 
   static createByJSON(json: IHeroInterface = {}) {
-    const {id, name} = json;
-    return new Hero({id, name});
+    const {id, name, age, phone, address, hobby, infoType} = json;
+    return new Hero({id, name, age, phone, address, hobby, infoType});
   }
 
   constructor(attr: IHeroInterface = {}) {
     this.id = attr.id;
     this.name = attr.name;
+    this.age = attr.age;
+    this.phone = attr.phone;
+    this.address = attr.address;
+    this.hobby = attr.hobby;
+    this.infoType = attr.infoType;
   }
 
 }

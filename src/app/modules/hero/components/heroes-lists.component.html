@@ -1,6 +1,6 @@
 <div class="container">
   <ul class="list-unstyled">
-    <li *ngFor="let hero of heroes" (click)="routerToHeroDetail(hero)">
+    <li *ngFor="let hero of heroes; trackBy: hero?.id" (click)="routerToHeroDetail(hero)">
       <label class="badge">{{hero.id}}</label>
       <span>{{hero.name}}</span>
     </li>

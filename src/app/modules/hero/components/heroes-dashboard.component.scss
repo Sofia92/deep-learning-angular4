@@ -3,11 +3,15 @@
  * Date: 2018/1/11
  * Description:
  */
+@import "hero-theme";
 
 :host {
   display: block;
   .container {
+    @extend %margin-container;
     ul {
+      padding: 10px;
+      margin: 30px 20px;
       li {
         display: inline-block;
         border: 1px solid #ddd;
@@ -22,6 +26,18 @@
           color: #607D8B;
           background-color: #DDD;
         }
+      }
+    }
+    .append-hero-area {
+      position: absolute;
+      right: 10px;
+      display: block;
+      top: 10px;
+      button {
+        @extend %plain-btn;
+      }
+      input {
+        @extend %plain-input;
       }
     }
   }

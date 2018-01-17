@@ -3,6 +3,30 @@
  * Date: 2018/1/12
  * Description:
  */
+@import "hero-theme";
+
 :host {
   display: block;
+  .container-hero-detail {
+    @extend %margin-container;
+    padding: 0 20px;
+    h2 {
+      @include hero-state($color-state-init);
+      &.modified {
+        @include hero-state($color-state-modified);
+      }
+    }
+    .hero-panel {
+      input {
+        @extend %plain-input;
+      }
+    }
+    .btn-save {
+      @extend %plain-btn;
+    }
+    .btn-back {
+      @extend %back-btn;
+      margin: 20px;
+    }
+  }
 }
