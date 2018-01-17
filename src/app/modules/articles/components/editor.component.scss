@@ -16,8 +16,11 @@
 
 :host {
   .container {
-    .left-editor, .right-display {
+    .left-editor, #right-display {
       @extend %editor-panel;
+    }
+    #right-display {
+      vertical-align: top;
     }
   }
 }
