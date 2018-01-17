@@ -1,0 +1,13 @@
+/**
+ * User: sofia
+ * Date: 2018/1/17
+ * Description:
+ */
+:host {
+  display: inline-block;
+  width: 150px;
+  padding: 10px;
+  height: calc(100vh - 34px);
+  border-right: 1px solid #ddd;
+  box-sizing: border-box;
+}

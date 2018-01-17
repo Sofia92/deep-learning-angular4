@@ -1,0 +1,19 @@
+/**
+ * User: sofia
+ * Date: 2018/1/17
+ * Description:
+ */
+:host {
+  display: block;
+  .container {
+    padding: 10px 20px;
+    nav {
+      display: inline-block;
+    }
+    .main-content {
+      display: inline-block;
+      vertical-align: top;
+      width: calc(100% - 160px);
+    }
+  }
+}

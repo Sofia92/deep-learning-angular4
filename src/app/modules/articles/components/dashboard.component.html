@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="article-panel-group">
+    <div class="article-panel" *ngFor="let article of articles">
+      <strong>{{article.title}}</strong>
+      <p>{{article.content}}</p>
+    </div>
+  </div>
+  <div class="blankPage" *ngIf="showBlankPage">
+    <label for="">
+      标题
+      <input type="text" [(ngModel)]="articleName">
+    </label>
+    <button (click)="createArticle(articleName)">新建文章</button>
+  </div>
+</div>

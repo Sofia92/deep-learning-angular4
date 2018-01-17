@@ -1,0 +1,20 @@
+<div class="container">
+  <table class="article-list">
+    <thead>
+    <tr>
+      <th>标题</th>
+      <th>分类</th>
+      <th>更新时间</th>
+      <th>操作</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="cursor-pointer" *ngFor="let article of articles">
+      <td (click)="routerToEditor(article)">{{article.title}}</td>
+      <td>{{article.category.name}}</td>
+      <td>{{article.updatedAt|date: 'yyyy-MM-dd HH:mm:ss'}}</td>
+      <td>删除</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

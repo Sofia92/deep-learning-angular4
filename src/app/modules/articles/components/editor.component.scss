@@ -1,0 +1,23 @@
+/**
+ * User: sofia
+ * Date: 2018/1/17
+ * Description:
+ */
+
+%editor-panel {
+  width: 49%;
+  display: inline-block;
+  border: 1px solid #ddd;
+  height: calc(100vh - 57px);
+  padding: 5px 10px;
+  margin: 0 1px;
+  box-sizing: border-box;
+}
+
+:host {
+  .container {
+    .left-editor, .right-display {
+      @extend %editor-panel;
+    }
+  }
+}
