@@ -19,6 +19,7 @@ import {ArticleDashboardComponent} from './components/dashboard.component';
 import {ArticleListComponent} from './components/list.component';
 import {ArticleCategoriesComponent} from './components/categories.component';
 import {ArticleEditorComponent} from './components/editor.component';
+import {ArticleViewComponent} from './components/view.component.page';
 
 
 const editRoutes: Routes = [
@@ -28,7 +29,8 @@ const editRoutes: Routes = [
     {path: 'dashboard', component: ArticleDashboardComponent},
     {path: 'lists', component: ArticleListComponent},
     {path: 'categories', component: ArticleCategoriesComponent},
-    {path: ':articleId', component: ArticleEditorComponent}
+    {path: ':articleId', component: ArticleEditorComponent},
+    {path: ':articleId/view', component: ArticleViewComponent}
   ]
   }
 ];

@@ -27,7 +27,19 @@ export class ArticleSerialize {
   static normalizeArticle(json: IServerArticleInterface): IArticleInterface {
     const {id, title, content, updatedat, createdat, categoryid} = json;
     return {
-      id, title, content, updatedAt: updatedat, createdAt: createdat, category: {id: categoryid}
+      id,
+      title,
+      content: content && JSON.parse(content),
+      updatedAt: updatedat,
+      createdAt: createdat,
+      category: {id: categoryid}
+    }
+  }
+
+  static deNormalizeArticle(attr: IArticleInterface): IServerArticleInterface {
+    const {id, title, content, createdAt, category} = attr;
+    return {
+      id, title, content: content && JSON.stringify(content), createdat: createdAt, categoryid: category.id
     }
   }
 

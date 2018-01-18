@@ -12,6 +12,8 @@ import {ArticleDashboardComponent} from './dashboard.component';
 import {ArticleListComponent} from './list.component';
 import {ArticleCategoriesComponent} from './categories.component';
 import {ArticleEditorComponent} from './editor.component';
+import {RenderedContentComponent} from './rendered-content.page';
+import {ArticleViewComponent} from './view.component.page';
 
 @NgModule({
   imports: [
@@ -23,12 +25,16 @@ import {ArticleEditorComponent} from './editor.component';
     ArticleListComponent,
     ArticleCategoriesComponent,
     ArticleEditorComponent,
+    RenderedContentComponent,
+    ArticleViewComponent,
   ],
   exports: [
     ArticleDashboardComponent,
     ArticleListComponent,
     ArticleCategoriesComponent,
     ArticleEditorComponent,
+    RenderedContentComponent,
+    ArticleViewComponent,
   ]
 })
 

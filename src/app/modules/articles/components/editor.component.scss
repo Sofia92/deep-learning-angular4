@@ -16,11 +16,22 @@
 
 :host {
   .container {
+    nav {
+      position: relative;
+      strong, input {
+        position: absolute;
+        left: 45%;
+      }
+      input{
+        left: 40%;
+      }
+    }
     .left-editor, #right-display {
       @extend %editor-panel;
     }
     #right-display {
       vertical-align: top;
+      overflow: auto;
     }
   }
 }

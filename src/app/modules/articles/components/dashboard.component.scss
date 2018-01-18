@@ -3,3 +3,20 @@
  * Date: 2018/1/17
  * Description:
  */
+:host {
+  display: block;
+  .action {
+    text-align: right;
+  }
+  .article-panel {
+    display: inline-block;
+    background: #eee;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+    width: 250px;
+    overflow: hidden;
+    height: 200px;
+    cursor: pointer;
+  }
+}

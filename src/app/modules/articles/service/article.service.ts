@@ -29,8 +29,24 @@ export class ArticleService {
       })
   }
 
+  getCurrentArticleById(id: number): Observable<Article> {
+    return this.http.get(`${host}/articles/${id}`).map(article => {
+      const normalizedArticle = ArticleSerialize.normalizeArticle(article);
+      return Article.createByJSON(normalizedArticle);
+    })
+  }
+
+  saveArticle(article: Article): Observable<Article> {
+    const deNormalizedArticle = ArticleSerialize.deNormalizeArticle(article);
+    return this.http.put(`${host}/articles/${article.id}`, deNormalizedArticle)
+  }
+
   createArticle(name: string) {
     return this.http.post(`${host}/articles`, {title: name});
+  }
+
+  removeArticle(article: Article) {
+    return this.http.delete(`${host}/articles/${article.id}`);
   }
 
   fetchCategories(pageInfo: CommonTyping.IPageInfoInterface): Observable<Category[]> {

@@ -1,15 +1,13 @@
 <div class="container">
+  <div class="action">
+    <input type="text" [(ngModel)]="articleName" placeholder="标题">
+    <button class="cursor-pointer" (click)="createArticle(articleName)">新建文章</button>
+  </div>
   <div class="article-panel-group">
-    <div class="article-panel" *ngFor="let article of articles">
+    <div class="article-panel " *ngFor="let article of articles" (click)="routerToView(article)">
       <strong>{{article.title}}</strong>
-      <p>{{article.content}}</p>
+      <app-rendered-content [content]="article.content" ></app-rendered-content>
     </div>
   </div>
-  <div class="blankPage" *ngIf="showBlankPage">
-    <label for="">
-      标题
-      <input type="text" [(ngModel)]="articleName">
-    </label>
-    <button (click)="createArticle(articleName)">新建文章</button>
-  </div>
+
 </div>

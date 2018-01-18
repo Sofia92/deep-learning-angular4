@@ -13,7 +13,10 @@
       <td (click)="routerToEditor(article)">{{article.title}}</td>
       <td>{{article.category.name}}</td>
       <td>{{article.updatedAt|date: 'yyyy-MM-dd HH:mm:ss'}}</td>
-      <td>删除</td>
+      <td>
+        <button class="cursor-pointer" (click)="viewArticle(article)"><i class="fa fa-eye"></i>&nbsp;预览</button>
+        <button class="cursor-pointer" (click)="deleteArticle(article)"><i class="fa fa-trash"></i>&nbsp;删除</button>
+      </td>
     </tr>
     </tbody>
   </table>

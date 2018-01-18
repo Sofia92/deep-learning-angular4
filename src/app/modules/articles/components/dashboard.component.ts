@@ -7,6 +7,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ArticleService} from '../service/article.service';
 import {Article} from '../model/article';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-articles-dashboard',
@@ -20,7 +21,7 @@ export class ArticleDashboardComponent implements OnInit {
   showBlankPage: boolean;
   pageInfo: CommonTyping.IPageInfoInterface;
 
-  constructor(private _articleService: ArticleService) {
+  constructor(private router: Router, private _articleService: ArticleService) {
     this.pageInfo = {page: 1, pageSize: 9};
   }
 
@@ -32,11 +33,17 @@ export class ArticleDashboardComponent implements OnInit {
   }
 
   createArticle(articleName) {
-    this._articleService.createArticle(articleName).switchMap(() => {
-      return this._articleService.fetchArticles(this.pageInfo);
-    }).subscribe((articles: Article[]) => {
-      this.articles = articles;
-      this.showBlankPage = articles.length === 0;
-    })
+    if (!!articleName) {
+      this._articleService.createArticle(articleName).switchMap(() => {
+        return this._articleService.fetchArticles(this.pageInfo);
+      }).subscribe((articles: Article[]) => {
+        this.articles = articles;
+        this.showBlankPage = articles.length === 0;
+      })
+    }
+  }
+
+  routerToView(article: Article) {
+    this.router.navigate([`articles/${article.id}/view`])
   }
 }

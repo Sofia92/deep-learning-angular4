@@ -16,7 +16,6 @@ import {Article} from '../model/article';
 
 export class ArticleListComponent implements OnInit {
   articles: Article[];
-  showBlankPage: boolean;
   pageInfo: CommonTyping.IPageInfoInterface;
 
   constructor(private router: Router, private _articleService: ArticleService) {
@@ -26,12 +25,23 @@ export class ArticleListComponent implements OnInit {
   ngOnInit() {
     this._articleService.fetchArticles(this.pageInfo).subscribe((articles: Article[]) => {
       this.articles = articles;
-      this.showBlankPage = articles.length === 0;
     })
   }
 
   routerToEditor(article: Article) {
     this.router.navigate([`articles/${article.id}`])
+  }
+
+  viewArticle(article: Article) {
+    this.router.navigate([`articles/${article.id}/view`])
+  }
+
+  deleteArticle(article: Article) {
+    this._articleService.removeArticle(article).switchMap(() => {
+      return this._articleService.fetchArticles(this.pageInfo)
+    }).subscribe((articles: Article[]) => {
+      this.articles = articles;
+    })
   }
 
 }

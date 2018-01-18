@@ -4,20 +4,10 @@
  * Version: 1.0.0
  * Description:
  */
-import {Component} from '@angular/core';
-import * as marked from 'marked';
-
-marked.setOptions({
-  renderer: new marked.Renderer(),
-  gfm: true,
-  tables: true,
-  breaks: false,
-  pedantic: false,
-  sanitize: false,
-  smartLists: true,
-  smartypants: false
-});
-
+import {Component, OnInit} from '@angular/core';
+import {ArticleService} from '../service/article.service';
+import {ActivatedRoute} from '@angular/router';
+import {Article} from '../model/article';
 
 @Component({
   selector: 'app-article-editor',
@@ -25,17 +15,34 @@ marked.setOptions({
   styleUrls: ['./editor.component.scss']
 })
 
-export class ArticleEditorComponent {
-  content: any;
-  markedContent: any;
+export class ArticleEditorComponent implements OnInit {
+  currentArticle: Article;
+  titleEditable: boolean;
+
+  constructor(private _articleService: ArticleService, private activatedRoute: ActivatedRoute) {
+    this.titleEditable = false;
+  }
+
+  ngOnInit() {
+    this.activatedRoute.params.switchMap(res => {
+      return this._articleService.getCurrentArticleById(+res.articleId)
+    }).subscribe((article: Article) => {
+      this.currentArticle = article;
+    })
+  }
 
   back() {
     window.history.back();
   }
 
-  displayMarkedContent(content) {
-    this.content = content;
-    this.markedContent = marked(content);
+  showUpdateTitle() {
+    this.titleEditable = true;
   }
 
+  savePage() {
+    this.titleEditable = false;
+    this._articleService.saveArticle(this.currentArticle).subscribe(() => {
+
+    })
+  }
 }

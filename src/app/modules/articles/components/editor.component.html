@@ -1,8 +1,13 @@
-<div class="container">
+<div class="container" *ngIf="currentArticle">
   <nav>
     <button (click)="back()">back</button>
+    <button (click)="savePage()">save</button>
+    <strong *ngIf="!titleEditable">{{currentArticle.title|| 'ss'}}
+      <i class="fa fa-pencil-square-o cursor-pointer" (click)="showUpdateTitle()"></i></strong>
+
+    <input *ngIf="titleEditable" type="text" [(ngModel)]="currentArticle.title" (keyup.enter)="savePage()">
   </nav>
 
-  <textarea class="left-editor" [ngModel]="content" (ngModelChange)="displayMarkedContent($event)"></textarea>
-  <div id="right-display" [innerHTML]="markedContent"></div>
+  <textarea class="left-editor" [(ngModel)]="currentArticle.content"></textarea>
+  <app-rendered-content id="right-display" [content]="currentArticle.content"></app-rendered-content>
 </div>

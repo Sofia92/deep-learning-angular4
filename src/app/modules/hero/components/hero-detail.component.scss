@@ -16,11 +16,6 @@
         @include hero-state($color-state-modified);
       }
     }
-    .hero-panel {
-      input {
-        @extend %plain-input;
-      }
-    }
     .btn-save {
       @extend %plain-btn;
     }
