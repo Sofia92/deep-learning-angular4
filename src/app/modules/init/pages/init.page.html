@@ -1,0 +1,25 @@
+<h3>Component lifecycle hooks</h3>
+
+<!--<a href="#hooks">Peek-a-boo: (most) lifecycle hooks</a> <br>-->
+<!--<a href="#onchanges">OnChanges</a> <br>-->
+<!--<a href="#docheck">DoCheck</a> <br>-->
+<!--<a href="#after-content">AfterContent init and checked</a><br>-->
+<!--<a href="#after-view">AfterView init and checked</a> <br>-->
+<!--<a href="#spy">Spy: directive with OnInit & OnDestroy</a> <br>-->
+<!--<a href="#counter">Counter: OnChanges + Spy directive</a> <br>-->
+
+<ul class="list-unstyled">
+  <ng-container *ngFor="let hook of hooks">
+    <li [class.active]="hook === currentHook" (click)="setCurrentHook(hook)">{{hook.name}}</li>
+  </ng-container>
+</ul>
+
+<div>
+  <peek-a-boo-parent *ngIf="currentHook.name==='hooks'"></peek-a-boo-parent>
+  <spy-parent *ngIf="currentHook.name==='spy'"></spy-parent>
+  <on-changes-parent *ngIf="currentHook.name==='onchanges'"></on-changes-parent>
+  <do-check-parent *ngIf="currentHook.name==='docheck'"></do-check-parent>
+  <after-view-parent *ngIf="currentHook.name==='after-view'"></after-view-parent>
+  <after-content-parent *ngIf="currentHook.name==='after-content'"></after-content-parent>
+  <counter-parent *ngIf="currentHook.name==='counter'"></counter-parent>
+</div>
